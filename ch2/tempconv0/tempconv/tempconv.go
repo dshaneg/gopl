@@ -1,10 +1,11 @@
-// Package tempconv performs Celsius and Fahrenheit temperature conversions
+// Package tempconv performs Celsius, Kelvin, and Fahrenheit temperature conversions
 package tempconv
 
 import "fmt"
 
 type Celsius float64
 type Fahrenheit float64
+type Kelvin float64
 
 const (
 	AbsoluteZeroC Celsius = -273.15
@@ -12,14 +13,14 @@ const (
 	BoilingC      Celsius = 100
 )
 
-func CToF(c Celsius) Fahrenheit { return Fahrenheit(c*9/5 + 32) }
+func (k Kelvin) ToCelsius() Celsius       { return Celsius(k) + AbsoluteZeroC }
+func (k Kelvin) ToFahrenheit() Fahrenheit { return k.ToCelsius().ToFahrenheit() }
+func (k Kelvin) String() string           { return fmt.Sprintf("%gK", k) }
 
-func FToC(f Fahrenheit) Celsius { return Celsius((f - 32) * 5 / 9) }
+func (c Celsius) ToFahrenheit() Fahrenheit { return Fahrenheit(c*9/5 + 32) }
+func (c Celsius) ToKelvin() Kelvin         { return Kelvin(c - AbsoluteZeroC) }
+func (c Celsius) String() string           { return fmt.Sprintf("%g℃", c) }
 
-func (c Celsius) ToFahrenheit() Fahrenheit { return CToF(c) }
-
-func (f Fahrenheit) ToCelcius() Celsius { return FToC(f) }
-
-func (c Celsius) String() string { return fmt.Sprintf("%g℃", c) }
-
-func (f Fahrenheit) String() string { return fmt.Sprintf("%g℉", f) }
+func (f Fahrenheit) ToCelsius() Celsius { return Celsius((f - 32) * 5 / 9) }
+func (f Fahrenheit) ToKelvin() Kelvin   { return f.ToCelsius().ToKelvin() }
+func (f Fahrenheit) String() string     { return fmt.Sprintf("%g℉", f) }
