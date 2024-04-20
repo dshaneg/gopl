@@ -1,8 +1,23 @@
 # Chapter 1 Examples
 
+.PHONY: ch1/helloworld
+ch1/helloworld:
+	go run ./ch1/helloworld
+
+.PHONY: ch1/echo1-build
+ch1/echo1-build:
+	go build -o ./bin/echo1 ./ch1/echo1
+
+.PHONY: ch1/echo2-build
+ch1/echo2-build:
+	go build -o ./bin/echo2 ./ch1/echo2
+
+.PHONY: ch1/echo3-build
+ch1/echo3-build:
+	go build -o ./bin/echo3 ./ch1/echo3
 .PHONY: ch1/lissajous
 ch1/lissajous:
-	go run ch1/lissajous/main.go > /mnt/d/Users/dshan/Pictures/liss.gif.PHONY: ch1/fetch
+	go run ./ch1/lissajous/main.go > /mnt/d/Users/dshan/Pictures/liss.gif
 
 .PHONY: ch1/fetch
 ch1/fetch:
