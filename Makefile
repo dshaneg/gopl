@@ -15,6 +15,16 @@ ch1/echo2-build:
 .PHONY: ch1/echo3-build
 ch1/echo3-build:
 	go build -o ./bin/echo3 ./ch1/echo3
+
+.PHONY: ch1/dup1-build
+ch1/dup1-build:
+	go build -o ./bin/dup1 ./ch1/dup1
+
+.PHONY: ch1/dup1
+ch1/dup1:
+	chmod +x ./ch1/dup1/run.sh
+	./ch1/dup1/run.sh
+
 .PHONY: ch1/lissajous
 ch1/lissajous:
 	go run ./ch1/lissajous/main.go > /mnt/d/Users/dshan/Pictures/liss.gif
