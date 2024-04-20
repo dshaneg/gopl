@@ -25,6 +25,24 @@ ch1/dup1:
 	chmod +x ./ch1/dup1/run.sh
 	./ch1/dup1/run.sh
 
+.PHONY: ch1/dup2-build
+ch1/dup2-build:
+	go build -o ./bin/dup2 ./ch1/dup2
+
+.PHONY: ch1/dup2
+ch1/dup2:
+	chmod +x ./ch1/dup2/run.sh
+	./ch1/dup2/run.sh
+	./bin/dup2 ./ch1/data/hobbits.txt ./ch1/data/humans.txt ./ch1/data/fantasyfolk.txt
+
+.PHONY: ch1/dup3-build
+ch1/dup3-build:
+	go build -o ./bin/dup3 ./ch1/dup3
+
+.PHONY: ch1/dup3
+ch1/dup3:
+	./bin/dup3 ./ch1/data/hobbits.txt ./ch1/data/humans.txt ./ch1/data/fantasyfolk.txt
+
 .PHONY: ch1/lissajous
 ch1/lissajous:
 	go run ./ch1/lissajous/main.go > /mnt/d/Users/dshan/Pictures/liss.gif
