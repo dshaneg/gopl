@@ -26,7 +26,19 @@ ch1/server3:
 
 # Chapter 2 Examples
 
+.PHONY: ch2/boiling
+ch2/boiling:
+	go run ./ch2/boiling
+
+.PHONY: ch2/ftoc
+ch2/ftoc:
+	go run ./ch2/ftoc
+
 # need to build this one then run it from the executable because the command line arguments didn't play nice with go run (even with --)
 .PHONY: ch2/echo4-build
 ch2/echo4-build:
-	go build -o ./bin/echo ./ch2/echo4
+	go build -o ./bin/echo4 ./ch2/echo4
+
+.PHONY: ch2/tempconv0
+ch2/tempconv0:
+	go run ./ch2/tempconv0

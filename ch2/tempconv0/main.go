@@ -2,7 +2,8 @@ package main
 
 import (
 	"fmt"
-	"temperature/tempconv"
+
+	"github.com/dshaneg/gopl/ch2/internal/tempconv"
 )
 
 func main() {
