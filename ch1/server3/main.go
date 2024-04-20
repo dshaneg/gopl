@@ -5,12 +5,14 @@ import (
 	"fmt"
 	"log"
 	"net/http"
+
+	"github.com/dshaneg/gopl/ch1/internal/lissajous"
 )
 
 func main() {
 	http.HandleFunc("/", handler)
 	http.HandleFunc("/liss", func(w http.ResponseWriter, r *http.Request) {
-		lissajous(w)
+		lissajous.Lissajous(w)
 	})
 	log.Fatal(http.ListenAndServe("localhost:8000", nil))
 }

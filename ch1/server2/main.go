@@ -19,6 +19,7 @@ func main() {
 
 // handler echoes the Path component of the requested URL.
 func handler(w http.ResponseWriter, r *http.Request) {
+	fmt.Println(r.URL)
 	mu.Lock()
 	count++
 	mu.Unlock()
