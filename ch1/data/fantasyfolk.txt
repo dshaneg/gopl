@@ -9,5 +9,6 @@ Radagast the Brown
 Gandalf the Grey
 Gimli
 Gandalf the Grey
+Aragorn
 Legolas
 Gandalf the Grey
