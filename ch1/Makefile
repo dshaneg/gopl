@@ -9,7 +9,7 @@ all: $(DIST)/helloworld \
      $(DIST)/fetch $(DIST)/fetchall \
      $(DIST)/server1 $(DIST)/server2 $(DIST)/server3 \
 
-# Hello, world!
+# 1.1 Hello, world!
 
 $(DIST)/helloworld:
 	go build -o $(DIST)/helloworld ./helloworld
@@ -18,7 +18,7 @@ $(DIST)/helloworld:
 helloworld:
 	$(DIST)/helloworld
 
-# Echo
+# 1.2 Command-Line Arguments
 
 $(DIST)/echo1:
 	go build -o $(DIST)/echo1 ./echo1
@@ -29,7 +29,7 @@ $(DIST)/echo2:
 $(DIST)/echo3:
 	go build -o $(DIST)/echo3 ./echo3
 
-# Find duplicates
+# 1.3 Finding Duplicate Lines
 
 $(DIST)/dup1:
 	go build -o $(DIST)/dup1 ./dup1
@@ -53,7 +53,7 @@ $(DIST)/dup3:
 dup3: $(DIST)/dup3
 	$(DIST)/dup3 ./data/hobbits.txt ./data/humans.txt ./data/fantasyfolk.txt
 
-# Make a gif
+# 1.4 Animated GIFs
 
 $(DIST)/lissajous:
 	go build -o $(DIST)/lissajous ./lissajous
@@ -62,7 +62,7 @@ $(DIST)/lissajous:
 lissajous: $(DIST)/lissajous
 	$(DIST)/lissajous > /mnt/d/Users/dshan/Pictures/liss.gif
 
-# http fetch
+# 1.5 Fetching a URL
 
 $(DIST)/fetch:
 	go build -o $(DIST)/fetch ./fetch
@@ -71,6 +71,8 @@ $(DIST)/fetch:
 fetch: $(DIST)/fetch
 	$(DIST)/fetch https://google.com news.ycombinator.co
 	
+# 1.6 Fetching URLs Concurrently
+
 $(DIST)/fetchall:
 	go build -o $(DIST)/fetchall ./fetchall
 
@@ -78,7 +80,7 @@ $(DIST)/fetchall:
 fetchall: $(DIST)/fetchall
 	$(DIST)/fetchall https://golang.org http://gopl.io https://godoc.org
 
-# http server
+# 1.7 A Web Server
 
 $(DIST)/server1:
 	go build -o $(DIST)/server1 ./server1
