@@ -4,9 +4,9 @@ I'm working through [_The Go Programming Language_](https://www.gopl.io/) by Don
 
 I may not work through every exercise, and I've modified the examples based on changes in the language since the book was written, as well as a little personal flair here and there.
 
-I included a [`Makefile`](Makefile) that allows you to execute (or build) each example. The make rules are named with a chapter prefix, then slash, then the name of the program. The exercises that require a build instead of a run have a suffix of `-build` on the make rule.
+I included `Makefile`s in each chapter's directory that allow you to build and in some cases execute each example. I also included a root `Makefile` that includes the `all` and `clean` rules, along with rules to build all the examples in each chapter independently. You can run the chapter-based `make` rules either by changing to the chapter directory and calling make in that directory, or by staying in the project directory and using `make -C {chapterdir}`.
 
-You can run all the programs from the root of the project with a `make` command, and for those programs that need to be built, the binary is output to the `./bin` directory, and can be executed with `./bin/{binaryname}`
+All binaries are built to the `bin` directory in the project root, and can be executed with `./bin/{binaryname}`
 
 ## Attribution
 
