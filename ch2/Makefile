@@ -50,3 +50,9 @@ cf: $(DIST)/cf
 	$(DIST)/cf 32
 	$(DIST)/cf 212
 	$(DIST)/cf -40
+
+popcount:
+	go test -v ./internal/popcount
+
+popcount-bench:
+	go test -v -bench=. -benchmem ./internal/popcount
