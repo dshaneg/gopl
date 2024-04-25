@@ -2,6 +2,7 @@ package popcount
 
 import (
 	"math"
+	"strconv"
 	"testing"
 )
 
@@ -84,50 +85,17 @@ func BenchmarkPopcountShift64(b *testing.B) {
 	}
 }
 
-func BenchmarkPopcountShiftNonZero64(b *testing.B) {
-	for i := 0; i < b.N; i++ {
-		PopCountShiftNonZero(math.MaxUint64)
-	}
-}
-
-func BenchmarkPopcountShiftNonZero32(b *testing.B) {
-	for i := 0; i < b.N; i++ {
-		PopCountShiftNonZero(math.MaxUint32)
-	}
-}
-
-func BenchmarkPopcountShiftNonZero16(b *testing.B) {
-	for i := 0; i < b.N; i++ {
-		PopCountShiftNonZero(math.MaxUint16)
-	}
-}
-
-func BenchmarkPopcountShiftNonZero8(b *testing.B) {
-	for i := 0; i < b.N; i++ {
-		PopCountShiftNonZero(math.MaxUint8)
-	}
-}
-
-func BenchmarkPopcountShiftNonZero4(b *testing.B) {
-	for i := 0; i < b.N; i++ {
-		PopCountShiftNonZero(15)
-	}
-}
-
-func BenchmarkPopcountShiftNonZero2(b *testing.B) {
-	for i := 0; i < b.N; i++ {
-		PopCountShiftNonZero(3)
-	}
-}
-
-func BenchmarkPopcountShiftNonZero1(b *testing.B) {
-	for i := 0; i < b.N; i++ {
-		PopCountShiftNonZero(1)
-	}
-}
-
-func BenchmarkPopcountShiftNonZeroZero(b *testing.B) {
-	for i := 0; i < b.N; i++ {
-		PopCountShiftNonZero(0)
+func BenchmarkPopcountShiftNonZero(b *testing.B) {
+	// because the performance of this method is based on how many bits are set,
+	// we run the test for a somewhat representative sample, tho biased toward
+	// smaller numbers
+	for _, val := range []uint64{
+		math.MaxUint64, math.MaxUint32,
+		math.MaxUint16, math.MaxUint8, 15, 3, 1, 0} {
+		b.Run(strconv.FormatUint(val, 10), func(b *testing.B) {
+			for i := 0; i < b.N; i++ {
+				PopCountShiftNonZero(val)
+			}
+		})
 	}
 }
